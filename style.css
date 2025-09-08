@@ -61,20 +61,21 @@ nav a:hover {
 .sub-header {
     background-color: #5d93c1; /* A slightly different blue */
     padding: 0.5rem 0;
-    text-align: center;
 }
 
 .sub-header .container {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start; /* Aligns content to the left */
     align-items: center;
 }
 
 /* Pomodoro Timer Styles */
 .pomodoro-timer {
-    display: flex; /* This is the key change */
+    display: flex;
     align-items: center;
-    gap: 10px; /* Adds space between timer and buttons */
+    justify-content: center; /* horizontally center */
+    gap: 10px;
+    margin: 0 auto; /* nav ke andar center align */
 }
 
 #timer-display {
@@ -89,7 +90,6 @@ nav a:hover {
     gap: 5px; /* Adds space between the buttons */
 }
 
-
 .timer-controls button {
     font-size: 0.7em;
     padding: 5px 10px;
@@ -100,28 +100,192 @@ nav a:hover {
     transition: background-color 0.3s ease;
 }
 
-#start-btn {
-    background-color: #4CAF50;
-    color: white;
-}
-
-#pause-btn {
-    background-color: #ff9800;
-    color: white;
-}
-
-#reset-btn {
-    background-color: #f44336;
-    color: white;
-}
-
-.timer-controls button:hover {
-    opacity: 0.8;
-}
+#start-btn { background-color: #4CAF50; color: white; }
+#pause-btn { background-color: #ff9800; color: white; }
+#reset-btn { background-color: #f44336; color: white; }
 
 /* Main Content */
 main {
     flex: 1; /* This pushes the footer down */
+}
+
+/* Content Row for two-column layout */
+.content-row {
+    display: flex;
+    justify-content: space-between; /* gap banane ke liye */
+    align-items: flex-start; /* top se align */
+    gap: 30px;
+    margin-top: 50px;
+}
+
+/* Continuous Timer Styles - Left Side */
+.continuous-timer-section {
+    flex: 0 0 48%; /* ~half width */
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    order: 1; /* Always left */
+}
+
+.continuous-timer {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* center horizontally */
+}
+
+
+.continuous-timer-section h2 {
+    text-align: center;
+    color: #4682b4;
+    margin-bottom: 20px;
+}
+
+
+#continuous-timer-display {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 3em;
+    font-weight: bold;
+    color: #4682b4;
+    padding: 10px;
+    border: 2px solid #4682b4;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+.continuous-controls {
+    display: flex;
+    gap: 10px; /* buttons ke beech space */
+    justify-content: center; /* center align */
+    margin-top: 10px;
+}
+
+.continuous-controls button {
+    font-size: 1em;
+    padding: 10px 18px; /* buttons thode bade aur readable */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+
+#cont-start-btn { background-color: #4CAF50; color: white; }
+#cont-pause-btn { background-color: #ff9800; color: white; }
+#cont-reset-btn { background-color: #f44336; color: white; }
+
+/* Badges Styles */
+.badges-container h3 {
+    color: #4682b4;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 10px;
+    margin-top: 20px;
+}
+
+#badges-display {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    min-height: 50px;
+}
+
+.badge {
+    background-color: #ffd700; /* Gold color for badges */
+    color: #333;
+    padding: 10px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    text-align: center;
+    font-size: 0.9em;
+}
+
+.badge.unlocked {
+    background-color: #4CAF50;
+    color: white;
+}
+
+/* To-Do List Styles - Right Side */
+.todo-list {
+    flex: 0 0 48%; /* ~half width */
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    order: 2; /* Always right */
+}
+
+.todo-list h2 {
+    text-align: center;
+    color: #4682b4;
+    margin-bottom: 20px;
+}
+
+.input-area {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+#task-input {
+    width: 70%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+#add-task-btn {
+    padding: 10px 20px;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#add-task-btn:hover {
+    background-color: #45a049;
+}
+
+#task-list {
+    list-style: none;
+    padding: 0;
+}
+
+#task-list li {
+    background-color: #f9f9f9;
+    padding: 12px;
+    margin-bottom: 8px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-left: 5px solid #4682b4;
+    transition: background-color 0.3s ease;
+}
+
+#task-list li.completed {
+    text-decoration: line-through;
+    background-color: #e0e0e0;
+    border-left: 5px solid #888;
+}
+
+.delete-btn {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.delete-btn:hover {
+    background-color: #d32f2f;
 }
 
 /* Footer */
@@ -130,4 +294,17 @@ footer {
     color: #fff;
     text-align: center;
     padding: 1rem 0;
+}
+
+/* Responsive Layout for Small Screens */
+@media (max-width: 768px) {
+    .content-row {
+        flex-direction: column;
+    }
+
+    .continuous-timer-section,
+    .todo-list {
+        flex: 1 1 100%;
+        order: unset; /* default stacking */
+    }
 }

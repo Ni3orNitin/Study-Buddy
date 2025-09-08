@@ -35,7 +35,35 @@
     </div>
 
     <main class="container">
-        <!-- Your content will go here -->
+        <div class="content-row">
+            <section class="continuous-timer-section">
+                <h2>Continuous Study Tracker</h2>
+                <div class="continuous-timer">
+                    <div id="continuous-timer-display">00:00:00</div>
+                    <div class="continuous-controls">
+                        <button id="cont-start-btn">Start</button>
+                        <button id="cont-pause-btn">Pause</button>
+                        <button id="cont-reset-btn">Reset</button>
+                    </div>
+                </div>
+                <div class="badges-container">
+                    <h3>Your Badges</h3>
+                    <div id="badges-display">
+                        <!-- Badges will appear here -->
+                    </div>
+                </div>
+            </section>
+            <section class="todo-list">
+                <h2>Study Tasks</h2>
+                <div class="input-area">
+                    <input type="text" id="task-input" placeholder="Add a new task...">
+                    <button id="add-task-btn">Add Task</button>
+                </div>
+                <ul id="task-list">
+                    <!-- Tasks will be added here by JavaScript -->
+                </ul>
+            </section>
+        </div>
     </main>
 
     <footer>
@@ -45,5 +73,7 @@
     </footer>
 
     <script src="pomodoro.js"></script>
+    <script src="todo-list.js"></script>
+    <script src="continuous-timer.js"></script>
 </body>
 </html>
