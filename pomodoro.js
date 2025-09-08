@@ -5,7 +5,6 @@ const resetBtn = document.getElementById('reset-btn');
 
 let timer;
 let timeLeft = 1500; // 25 minutes in seconds
-let isPaused = false;
 
 function updateDisplay() {
     const minutes = Math.floor(timeLeft / 60);
@@ -14,28 +13,32 @@ function updateDisplay() {
 }
 
 function startTimer() {
-    if (timer) return; // Prevent multiple timers
-    isPaused = false;
-    timer = setInterval(() => {
-        if (!isPaused && timeLeft > 0) {
-            timeLeft--;
-            updateDisplay();
-        } else if (timeLeft <= 0) {
-            clearInterval(timer);
-            alert("Time's up! Take a break.");
-        }
-    }, 1000);
+    // Only start a timer if one isn't already running
+    if (!timer) {
+        timer = setInterval(() => {
+            if (timeLeft > 0) {
+                timeLeft--;
+                updateDisplay();
+            } else {
+                // Time is up
+                clearInterval(timer);
+                timer = null;
+                alert("Time's up! Take a break.");
+            }
+        }, 1000);
+    }
 }
 
 function pauseTimer() {
-    isPaused = true;
+    // Pause the timer by stopping the interval
+    clearInterval(timer);
+    timer = null;
 }
 
 function resetTimer() {
     clearInterval(timer);
     timer = null;
     timeLeft = 1500;
-    isPaused = false;
     updateDisplay();
 }
 
