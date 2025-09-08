@@ -1,0 +1,42 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f0f8ff; /* A light blue background color */
+    color: #333; /* A dark gray text color */
+    margin: 0;
+    padding-top: 50px;
+}
+
+h1 {
+    color: #4682b4; /* Steel blue for the heading */
+}
+
+p {
+    font-size: 1.2em;
+}
+
+/* ======================== */
+/* Responsive Styles */
+/* ======================== */
+
+/* For screens smaller than 600px */
+@media (max-width: 600px) {
+    h1 {
+        font-size: 1.5em; /* Smaller font for mobile */
+    }
+
+    p {
+        font-size: 1em; /* Smaller paragraph font */
+    }
+}
+
+/* For screens larger than 600px */
+@media (min-width: 601px) {
+    h1 {
+        font-size: 2.5em; /* Larger font for desktop */
+    }
+
+    p {
+        font-size: 1.2em; /* Larger paragraph font */
+    }
+}
