@@ -7,7 +7,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const badgesDisplay = document.getElementById('badges-display');
   const usernameInput = document.getElementById('user-name-input');
 
-
   if (!contTimerDisplay || !contStartBtn || !contPauseBtn || !contResetBtn || !badgesDisplay || !usernameInput) {
     console.error("continuous-timer.js: Missing one of the required DOM elements. Check IDs in HTML.");
     return;
@@ -22,12 +21,16 @@ document.addEventListener("DOMContentLoaded", () => {
   let badges = JSON.parse(localStorage.getItem('badges')) || [];
 
   const badgeThresholds = [
-    { label: "30-Minute Guru", seconds: 30 * 60, img: "badge-30min.png" },
-    { label: "1-Hour Hero", seconds: 60 * 60, img: "badge-1hr.png" },
-    { label: "1.5-Hour Achiever", seconds: 90 * 60 , img: "badge-1_5hr.png" },
-    { label: "2-Hour Champion", seconds: 1 * 60, img: "badge-2hr.png" },
-    { label: "3-Hour Legend", seconds: 1 * 60, img: "badge-3hr.png" },
-    { label: "4-Hour Legend", seconds: 2 * 60, img: "badge-3hr.png" }
+    { label: "30-Minute Guru", seconds: 1 * 60, img: "badge-30min.png" },
+    { label: "1-Hour Hero", seconds: 2 * 60, img: "badge-1hr.png" },
+    { label: "1.5-Hour Achiever", seconds: 90 * 60 , img: "badge-1hr30min.png" },
+    { label: "2-Hour Champion", seconds: 120 * 60, img: "badge-2hr.png" },
+    { label: "2.5-Hour Legend", seconds: 150 * 60, img: "badge-2hr30min.png" },
+    { label: "3-Hour Myth", seconds: 180 * 60, img: "badge-3hr.png" },
+    { label: "3.5-Hour Focus Mood", seconds: 210 * 60, img: "badge-3hr30min.png" },
+    { label: "4-Hour Beast", seconds: 240 * 60, img: "badge-4hr.png" },
+    { label: "4.5-Hour Undefeatable", seconds: 270 * 60, img: "badge-4hr30min.png" },
+    { label: "5-Hour Beyond The World", seconds: 300 * 60, img: "badge-5hr.png" },
   ];
 
   function renderTime() {
@@ -64,18 +67,18 @@ document.addEventListener("DOMContentLoaded", () => {
     img.onload = () => {
       ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
 
-      const userName = usernameInput.value.trim() || "Student"; // use input or fallback
+      const userName = usernameInput.value.trim() || "Student"; 
       ctx.fillStyle = "#000";
       ctx.font = "22px Arial Bold";
       ctx.textAlign = "center";
       ctx.fillText(userName, canvas.width / 2, canvas.height - 70);
 
-      const today = new Date().toLocaleDateString();
-      ctx.font = "18px Arial";
-      ctx.fillText(today, canvas.width / 2, canvas.height - 40);
+      const timestamp = new Date().toLocaleString();
+      ctx.font = "16px Arial";
+      ctx.fillText(timestamp, canvas.width / 2, canvas.height - 40);
 
       const link = document.createElement("a");
-      link.download = `${badge.label}-${userName}.png`;
+      link.download = `${badge.label}-${userName}-${Date.now()}.png`;
       link.href = canvas.toDataURL("image/png");
       link.textContent = "⬇️ Download";
       link.className = "download-link";
@@ -87,11 +90,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function checkBadges() {
     badgeThresholds.forEach(th => {
-      if (totalSeconds >= th.seconds && !badges.includes(th.label)) {
-        badges.push(th.label);
-        saveProgress();
-        renderBadges();
-        generateBadgeImage(th);
+      // generate a new badge every time milestone is reached if not already added in this session
+      if (totalSeconds >= th.seconds) {
+        const alreadyAdded = badges.some(b => b.label === th.label && b.sessionId === sessionId);
+        if (!alreadyAdded) {
+          badges.push({ label: th.label, sessionId }); // sessionId ensures uniqueness per session
+          saveProgress();
+          renderBadges();
+          generateBadgeImage(th);
+        }
       }
     });
   }
@@ -105,8 +112,8 @@ document.addEventListener("DOMContentLoaded", () => {
     badges.forEach(b => {
       const div = document.createElement('div');
       div.className = 'badge unlocked';
-      div.id = `badge-${b.replace(/\s+/g, '-')}`;
-      div.textContent = b;
+      div.id = `badge-${b.label.replace(/\s+/g, '-')}`;
+      div.textContent = b.label;
       badgesDisplay.appendChild(div);
     });
   }
@@ -115,6 +122,8 @@ document.addEventListener("DOMContentLoaded", () => {
     contStartBtn.disabled = isRunning;
     contPauseBtn.disabled = !isRunning;
   }
+
+  const sessionId = Date.now(); // unique session identifier for this continuous timer session
 
   function startContinuousTimer() {
     if (isRunning) return;
@@ -141,12 +150,13 @@ document.addEventListener("DOMContentLoaded", () => {
     contTimer = null;
     isRunning = false;
     totalSeconds = 0;
+    badges = []; // clear all session badges so new badges can be earned
     saveProgress();
     renderTime();
+    renderBadges();
     updateButtons();
   }
 
-  // Save username whenever it changes
   usernameInput.addEventListener('input', saveProgress);
 
   contStartBtn.addEventListener('click', startContinuousTimer);
