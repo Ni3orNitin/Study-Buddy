@@ -1,42 +1,70 @@
+/* Footer */
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1rem 0;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+}
+
+body {
+    padding-bottom: 70px; /* Adjust this value to match your footer's height */
+}
+
+/* General Body and Container Styles */
 body {
     font-family: Arial, sans-serif;
-    text-align: center;
-    background-color: #f0f8ff; /* A light blue background color */
-    color: #333; /* A dark gray text color */
     margin: 0;
-    padding-top: 50px;
+    background-color: #f0f8ff;
 }
 
-h1 {
-    color: #4682b4; /* Steel blue for the heading */
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
-p {
-    font-size: 1.2em;
+/* Header and Navigation Bar */
+header {
+    background-color: #4682b4;
+    color: #fff;
+    padding: 1rem 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 
-/* ======================== */
-/* Responsive Styles */
-/* ======================== */
-
-/* For screens smaller than 600px */
-@media (max-width: 600px) {
-    h1 {
-        font-size: 1.5em; /* Smaller font for mobile */
-    }
-
-    p {
-        font-size: 1em; /* Smaller paragraph font */
-    }
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-/* For screens larger than 600px */
-@media (min-width: 601px) {
-    h1 {
-        font-size: 2.5em; /* Larger font for desktop */
-    }
+header h1 {
+    margin: 0;
+    font-size: 1.5em;
+    color: #fff;
+}
 
-    p {
-        font-size: 1.2em; /* Larger paragraph font */
-    }
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav li {
+    margin-left: 20px;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: #add8e6;
 }
