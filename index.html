@@ -36,8 +36,12 @@
 
     <main class="container">
         <div class="content-row">
+
+            <!-- Continuous Timer Section -->
             <section class="continuous-timer-section">
                 <h2>Continuous Study Tracker</h2>
+
+                <!-- Timer Display & Controls -->
                 <div class="continuous-timer">
                     <div id="continuous-timer-display">00:00:00</div>
                     <div class="continuous-controls">
@@ -46,13 +50,21 @@
                         <button id="cont-reset-btn">Reset</button>
                     </div>
                 </div>
+
+                <!-- Badges Section -->
                 <div class="badges-container">
                     <h3>Your Badges</h3>
+                    <div class="badge-controls">
+                        <input id="user-name-input" type="text" placeholder="Your name (appears on badge)">
+                        <small style="color:#666; margin-left:8px;">(Optional)</small>
+                    </div>
                     <div id="badges-display">
-                        <!-- Badges will appear here -->
+                        <!-- Unlocked badges will appear here -->
                     </div>
                 </div>
             </section>
+
+            <!-- To-Do List Section -->
             <section class="todo-list">
                 <h2>Study Tasks</h2>
                 <div class="input-area">
@@ -60,9 +72,10 @@
                     <button id="add-task-btn">Add Task</button>
                 </div>
                 <ul id="task-list">
-                    <!-- Tasks will be added here by JavaScript -->
+                    <!-- Tasks will appear here -->
                 </ul>
             </section>
+
         </div>
     </main>
 
@@ -72,8 +85,19 @@
         </div>
     </footer>
 
+    <!-- Scripts -->
     <script src="pomodoro.js"></script>
     <script src="todo-list.js"></script>
     <script src="continuous-timer.js"></script>
+
+    <script>
+        // Connect user-name input to continuous timer for badges
+        const userNameInput = document.getElementById('user-name-input');
+        if(userNameInput) {
+            userNameInput.addEventListener('input', () => {
+                localStorage.setItem('badgeUserName', userNameInput.value.trim());
+            });
+        }
+    </script>
 </body>
 </html>

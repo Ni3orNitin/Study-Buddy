@@ -308,3 +308,54 @@ footer {
         order: unset; /* default stacking */
     }
 }
+
+.badge {
+    display: inline-block;
+    margin: 5px;
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-size: 14px;
+    background-color: #ddd;
+    color: #666;
+    transition: 0.3s;
+}
+.badge.unlocked {
+    background-color: #4CAF50;
+    color: white;
+    font-weight: bold;
+}
+
+
+.badge-controls {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  margin-bottom:10px;
+}
+
+#user-name-input {
+  padding:6px 8px;
+  border-radius:6px;
+  border:1px solid #ddd;
+  width: 180px;
+}
+
+
+.badge.unlocked {
+  margin: 10px;
+  padding: 10px;
+  border: 2px solid #4caf50;
+  border-radius: 10px;
+  display: inline-block;
+  text-align: center;
+  font-weight: bold;
+}
+
+.download-link {
+  display: block;
+  margin-top: 5px;
+  color: #007bff;
+  cursor: pointer;
+  text-decoration: underline;
+}
