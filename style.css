@@ -57,6 +57,68 @@ nav a:hover {
     color: #add8e6;
 }
 
+/* Sub-Header with Pomodoro Timer */
+.sub-header {
+    background-color: #5d93c1; /* A slightly different blue */
+    padding: 0.5rem 0;
+    text-align: center;
+}
+
+.sub-header .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Pomodoro Timer Styles */
+.pomodoro-timer {
+    display: flex; /* This is the key change */
+    align-items: center;
+    gap: 10px; /* Adds space between timer and buttons */
+}
+
+#timer-display {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #fff;
+}
+
+.timer-controls {
+    display: flex;
+    gap: 5px; /* Adds space between the buttons */
+}
+
+
+.timer-controls button {
+    font-size: 0.7em;
+    padding: 5px 10px;
+    margin: 0 2px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#start-btn {
+    background-color: #4CAF50;
+    color: white;
+}
+
+#pause-btn {
+    background-color: #ff9800;
+    color: white;
+}
+
+#reset-btn {
+    background-color: #f44336;
+    color: white;
+}
+
+.timer-controls button:hover {
+    opacity: 0.8;
+}
+
 /* Main Content */
 main {
     flex: 1; /* This pushes the footer down */
@@ -68,58 +130,4 @@ footer {
     color: #fff;
     text-align: center;
     padding: 1rem 0;
-}
-
-
-/* Pomodoro Timer Styles */
-.pomodoro-timer {
-    text-align: center;
-    margin-top: 50px;
-}
-
-#timer-display {
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 5em;
-    font-weight: bold;
-    color: #4682b4;
-    padding: 20px;
-    border: 2px solid #4682b4;
-    border-radius: 10px;
-    display: inline-block;
-    min-width: 200px;
-    background-color: #fff;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.timer-controls {
-    margin-top: 20px;
-}
-
-.timer-controls button {
-    font-size: 1.2em;
-    padding: 10px 20px;
-    margin: 0 5px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-#start-btn {
-    background-color: #4CAF50; /* Green */
-    color: white;
-}
-
-#pause-btn {
-    background-color: #ff9800; /* Orange */
-    color: white;
-}
-
-#reset-btn {
-    background-color: #f44336; /* Red */
-    color: white;
-}
-
-.timer-controls button:hover {
-    opacity: 0.8;
 }
