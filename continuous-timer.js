@@ -21,8 +21,8 @@ document.addEventListener("DOMContentLoaded", () => {
   let badges = JSON.parse(localStorage.getItem('badges')) || [];
 
   const badgeThresholds = [
-    { label: "30-Minute Guru", seconds: 1 * 60, img: "badge-30min.png" },
-    { label: "1-Hour Hero", seconds: 2 * 60, img: "badge-1hr.png" },
+    { label: "30-Minute Guru", seconds: 30 * 60, img: "badge-30min.png" },
+    { label: "1-Hour Hero", seconds: 60 * 60, img: "badge-1hr.png" },
     { label: "1.5-Hour Achiever", seconds: 90 * 60 , img: "badge-1hr30min.png" },
     { label: "2-Hour Champion", seconds: 120 * 60, img: "badge-2hr.png" },
     { label: "2.5-Hour Legend", seconds: 150 * 60, img: "badge-2hr30min.png" },
