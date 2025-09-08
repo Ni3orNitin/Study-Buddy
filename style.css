@@ -1,24 +1,12 @@
-/* Footer */
-footer {
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    padding: 1rem 0;
-    width: 100%;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-}
-
-body {
-    padding-bottom: 70px; /* Adjust this value to match your footer's height */
-}
-
-/* General Body and Container Styles */
+/* General Layout */
 body {
     font-family: Arial, sans-serif;
+    background-color: #f0f8ff; /* A light blue background color */
+    color: #333; /* A dark gray text color */
     margin: 0;
-    background-color: #f0f8ff;
+    min-height: 100vh; /* Full viewport height */
+    display: flex;
+    flex-direction: column;
 }
 
 .container {
@@ -67,4 +55,71 @@ nav a {
 
 nav a:hover {
     color: #add8e6;
+}
+
+/* Main Content */
+main {
+    flex: 1; /* This pushes the footer down */
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1rem 0;
+}
+
+
+/* Pomodoro Timer Styles */
+.pomodoro-timer {
+    text-align: center;
+    margin-top: 50px;
+}
+
+#timer-display {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 5em;
+    font-weight: bold;
+    color: #4682b4;
+    padding: 20px;
+    border: 2px solid #4682b4;
+    border-radius: 10px;
+    display: inline-block;
+    min-width: 200px;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.timer-controls {
+    margin-top: 20px;
+}
+
+.timer-controls button {
+    font-size: 1.2em;
+    padding: 10px 20px;
+    margin: 0 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#start-btn {
+    background-color: #4CAF50; /* Green */
+    color: white;
+}
+
+#pause-btn {
+    background-color: #ff9800; /* Orange */
+    color: white;
+}
+
+#reset-btn {
+    background-color: #f44336; /* Red */
+    color: white;
+}
+
+.timer-controls button:hover {
+    opacity: 0.8;
 }
